@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Tree Data</title>
+</head>
+<body>
+<h2>Tree Data</h2>
+<div id="treeData"></div>
+
+<script>
+    // Function to fetch JSON data from the API endpoint
+    function fetchTreeData() {
+        fetch('/api/tree/data')
+        .then(response => response.json())
+        .then(data => displayTreeData(data))
+        .catch(error => console.error('Error fetching tree data:', error));
+    }
+
+    // Function to display JSON data on the page
+    function displayTreeData(data) {
+        var treeDataElement = document.getElementById('treeData');
+        treeDataElement.innerText = JSON.stringify(data, null, 4);
+    }
+
+    // Call the function to fetch and display tree data
+    fetchTreeData();
+</script>
+</body>
+</html>
